@@ -2078,7 +2078,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Cone",
+    "_name": "TranDoll",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
