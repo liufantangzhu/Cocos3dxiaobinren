@@ -64,7 +64,7 @@
       "name": "Take heavyAttack.animation",
       "userData": {
         "gltfIndex": 0,
-        "wrapMode": 0,
+        "wrapMode": 2,
         "sample": 30,
         "span": {
           "from": 0,
@@ -249,7 +249,7 @@
             "name": "Take heavyAttack",
             "from": 0,
             "to": 1.4166666269302368,
-            "wrapMode": 0
+            "wrapMode": 2
           }
         ]
       }

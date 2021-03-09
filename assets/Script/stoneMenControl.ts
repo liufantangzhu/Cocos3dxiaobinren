@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, systemEvent, SystemEvent, EventKeyboard, Vec3, math, tween, EventMouse, SkeletalAnimation, Camera } from 'cc';
+import { _decorator, Component, Node, systemEvent, SystemEvent, EventKeyboard, Vec3, tween, EventMouse, SkeletalAnimation, Vec2 } from 'cc';
 const { ccclass, property } = _decorator;
 enum StoneManState {
     walk,
@@ -20,7 +20,7 @@ export class StoneMenControl extends Component {
     private JumpTime: number = 1;//跳跃时间
     private PastTime: number = 0;//跳起之后过的时间
     private RotaSpeedY: number = 0;//旋转角
-    private Camera: Node;
+    private Camera: Node = null;
     private CPosition: Vec3 = new Vec3();
     /**上一个状态 */
     private LastState: StoneManState = StoneManState.await;
@@ -45,7 +45,7 @@ export class StoneMenControl extends Component {
         this.Bone = this.StoneMan.getComponent(SkeletalAnimation);
         this.Bone.clips[1].events.push({
             frame: 0.1, // 第 0.5 秒时触发事件
-            func: 'onTriggered', // 事件触发时调用的函数名称
+            func: "FunTest", // 事件触发时调用的函数名称
             params: [], // 向 `func` 传递的参数
         });
         this.Bone.clips[1].updateEventDatas();
@@ -75,7 +75,7 @@ export class StoneMenControl extends Component {
         }, this);
     }
     walk(event: EventKeyboard): void {
-        console.log(event.keyCode);
+        // console.log(event.keyCode);
         // this.Bone.play("Take yidong");
         switch (event.keyCode) {
             case 87:
@@ -191,7 +191,6 @@ export class StoneMenControl extends Component {
                     this.DeltaPos.y = (- this.Gravity * this.PastTime) * deltaTime;
                     this.Camera.setPosition(this.CPosition.x, this.CPosition.y, this.CPosition.z += this.DeltaPos.y)
                 } else {
-
                     this.DeltaPos.y = 0;
                     this.JumpSpeed = 0;
                     this.PastTime = 0;
@@ -199,7 +198,7 @@ export class StoneMenControl extends Component {
                     console.log("停止跳跃");
                 }
             }
-            console.log(this.PastTime, this.JumpTime, this.SelfPos)
+            // console.log(this.PastTime, this.JumpTime, this.SelfPos)
         } else {
 
         }
@@ -209,19 +208,30 @@ export class StoneMenControl extends Component {
         this.node.setWorldPosition(this.SelfPos);
         this.node.eulerAngles = this.SelfRota;
         this.changeState();
+        this.HeavyAttack();
     }
     //判断攻击
     HeavyAttack() {
         let SelfPosW = this.node.getWorldPosition();
         let DollPosW = this.TranDoll.getWorldPosition();
-        let closeX: boolean = Math.abs(SelfPosW.x - DollPosW.x) < 10;
-        let closeZ: boolean = Math.abs(SelfPosW.z - DollPosW.z) < 10;
-        if (closeX || closeZ) {
 
+        // let closeX: boolean = Math.abs(SelfPosW.x - DollPosW.x) < 10;
+        // let closeZ: boolean = Math.abs(SelfPosW.z - DollPosW.z) < 10;
+        //判断距离
+        let distance = Math.pow(SelfPosW.x - DollPosW.x, 2) + Math.pow(SelfPosW.z - DollPosW.z, 2)
+        //判断是否在攻击角度内
+        if (distance > 9) {
+            return
         }
-
+        let B = new Vec3(SelfPosW.x + 10 * Math.sin(this.node.eulerAngles.y - 90), SelfPosW.y, SelfPosW.z + 10 * Math.cos(this.node.eulerAngles.y - 90));
+        let AB = new Vec2(SelfPosW.x - B.x, SelfPosW.z - B.z);
+        let AC = new Vec2(SelfPosW.x - DollPosW.x, SelfPosW.z - DollPosW.z);
+        let a = (AB.x * AC.x + AB.y * AC.y) / (Math.sqrt(Math.pow(AB.x, 2) + Math.pow(AB.y, 2)) * Math.sqrt(Math.pow(AC.x, 2) + Math.pow(AC.y, 2)))
+        let aTrue = Math.acos(a);
+        console.log(aTrue, a)
+        // console.log(distance, (SelfPosW.x - DollPosW.x), (SelfPosW.x - DollPosW.x) ^ 2)
     }
-    public onTriggered(): void {
+    public FunTest(): void {
         console.log("动画帧事件")
     }
 }
