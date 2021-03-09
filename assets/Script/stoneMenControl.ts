@@ -220,16 +220,16 @@ export class StoneMenControl extends Component {
         //判断距离
         let distance = Math.pow(SelfPosW.x - DollPosW.x, 2) + Math.pow(SelfPosW.z - DollPosW.z, 2)
         //判断是否在攻击角度内
-        if (distance > 9) {
+        if (distance > 99) {
             return
         }
-        let B = new Vec3(SelfPosW.x + 10 * Math.sin(this.node.eulerAngles.y - 90), SelfPosW.y, SelfPosW.z + 10 * Math.cos(this.node.eulerAngles.y - 90));
-        let AB = new Vec2(SelfPosW.x - B.x, SelfPosW.z - B.z);
-        let AC = new Vec2(SelfPosW.x - DollPosW.x, SelfPosW.z - DollPosW.z);
-        let a = (AB.x * AC.x + AB.y * AC.y) / (Math.sqrt(Math.pow(AB.x, 2) + Math.pow(AB.y, 2)) * Math.sqrt(Math.pow(AC.x, 2) + Math.pow(AC.y, 2)))
-        let aTrue = Math.acos(a);
-        console.log(aTrue, a)
-        // console.log(distance, (SelfPosW.x - DollPosW.x), (SelfPosW.x - DollPosW.x) ^ 2)
+        let B = new Vec3(SelfPosW.x + 10 * Math.sin(this.node.eulerAngles.y), SelfPosW.y, SelfPosW.z + 10 * Math.cos(this.node.eulerAngles.y));
+        let AB = new Vec3(SelfPosW.x - B.x, 0, SelfPosW.z - B.z);
+        let AC = new Vec3(SelfPosW.x - DollPosW.x, 0, SelfPosW.z - DollPosW.z);
+        // let a = (AB.x * AC.x + AB.y * AC.y) / (Math.sqrt(Math.pow(AB.x, 2) + Math.pow(AB.y, 2)) * Math.sqrt(Math.pow(AC.x, 2) + Math.pow(AC.y, 2)))
+        // let aTrue = Math.acos(a);
+        // console.log(this.SelfRota.y, aTrue * 90, a)
+        console.log(Vec3.angle(AB, AC) * 180 / Math.PI)
     }
     public FunTest(): void {
         console.log("动画帧事件")

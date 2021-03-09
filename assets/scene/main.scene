@@ -799,7 +799,7 @@
     "propertyPath": [
       "active"
     ],
-    "value": true
+    "value": false
   },
   {
     "__type__": "cc.TargetInfo",
@@ -1581,9 +1581,9 @@
     "_lrot": {
       "__type__": "cc.Quat",
       "x": 0,
-      "y": 0.7071067811865475,
+      "y": 0,
       "z": 0,
-      "w": 0.7071067811865476
+      "w": 1
     },
     "_lscale": {
       "__type__": "cc.Vec3",
@@ -1595,7 +1595,7 @@
     "_euler": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 90,
+      "y": 0,
       "z": 0
     },
     "_id": "dfaCTIPeVGCq0YAmmfoLl2"
@@ -2106,9 +2106,9 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -2.346,
-      "y": 1.931,
-      "z": 0.831
+      "x": 3,
+      "y": 1.619,
+      "z": 0
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -2119,9 +2119,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 2,
-      "y": 2,
-      "z": 2
+      "x": 1,
+      "y": 1,
+      "z": 1
     },
     "_layer": 1073741824,
     "_euler": {
@@ -2130,11 +2130,11 @@
       "y": 0,
       "z": 0
     },
-    "_id": "69ct+EKhdL0pQiHk9Cnkz3"
+    "_id": "dfnSG37VZBCIWSX/xYwvmF"
   },
   {
     "__type__": "cc.MeshRenderer",
-    "_name": "Cone<ModelComponent>",
+    "_name": "Sphere<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 170
@@ -2153,16 +2153,16 @@
       "__id__": 173
     },
     "_mesh": {
-      "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@38fd2"
+      "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@17020"
     },
     "_shadowCastingMode": 0,
     "_shadowReceivingMode": 1,
     "_enableMorph": true,
-    "_id": "c4vk58oj5HgqhkeYLmhbB0"
+    "_id": "600xA/MKVEtIKZlxui4Skr"
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "f1ipRw5aRJRZ9C2iZg62pq"
+    "fileId": "492SVdw3ZPdre+amT+eLU6"
   },
   {
     "__type__": "cc.ModelLightmapSettings",
